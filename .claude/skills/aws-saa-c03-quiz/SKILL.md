@@ -15,14 +15,18 @@ Run the picker rather than choosing a question by reading `questions.json`. Read
 bank yourself biases you toward the first entries and puts the answer in your context
 before the user has replied, which makes accidental leaking easy.
 
+`SKILL_DIR` below is the directory this SKILL.md sits in - the base directory named when
+the skill loads. Resolve it before running, so the skill works whether it came from a
+repository checkout or from an account-level install.
+
 ```bash
-python3 .claude/skills/aws-saa-c03-quiz/scripts/quiz.py
+python3 SKILL_DIR/scripts/quiz.py
 ```
 
 Track the IDs already asked in this conversation and pass them so questions do not repeat:
 
 ```bash
-python3 .claude/skills/aws-saa-c03-quiz/scripts/quiz.py --exclude sec-03,cost-01
+python3 SKILL_DIR/scripts/quiz.py --exclude sec-03,cost-01
 ```
 
 If the user asks to focus on one area, add `--domain secure|resilient|performing|cost`.
@@ -40,7 +44,7 @@ Then stop and wait. Do not reveal anything until the user replies.
 Once the user answers, get the answer key:
 
 ```bash
-python3 .claude/skills/aws-saa-c03-quiz/scripts/quiz.py --reveal sec-03
+python3 SKILL_DIR/scripts/quiz.py --reveal sec-03
 ```
 
 Reply in this shape:
